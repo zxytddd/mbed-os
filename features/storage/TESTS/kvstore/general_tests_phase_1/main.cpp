@@ -28,6 +28,7 @@
 #include "unity/unity.h"
 #include "utest/utest.h"
 #include "FileSystemStore.h"
+#include "features/storage/internal/utils.h"
 
 using namespace utest::v1;
 using namespace mbed;
@@ -67,11 +68,6 @@ static const char *kv_prefix[] = {"TDB_", "FS_", "SEC_"};
 static int kv_setup = TDBStoreSet;
 
 static const int heap_alloc_threshold_size = 4096;
-
-static inline uint32_t align_up(uint32_t val, uint32_t size)
-{
-    return (((val - 1) / size) + 1) * size;
-}
 
 /*----------------initialization------------------*/
 
