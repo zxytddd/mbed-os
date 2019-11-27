@@ -90,6 +90,9 @@ TEST_F(TDBStoreModuleTest, remove)
     EXPECT_EQ(tdb.remove("key"), MBED_SUCCESS);
     // Previous key should not be found
     EXPECT_NE(tdb.get("key", buf, 100, &size), MBED_SUCCESS);
+    EXPECT_EQ(tdb.deinit(), MBED_SUCCESS);
+    EXPECT_EQ(tdb.init(), MBED_SUCCESS);
+    EXPECT_NE(tdb.get("key", buf, 100, &size), MBED_SUCCESS);
 }
 
 TEST_F(TDBStoreModuleTest, set_deinit_init_get)
